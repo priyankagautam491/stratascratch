@@ -1,0 +1,6 @@
+SELECT from_user,
+       count(*) AS total_emails,
+       row_number() OVER (
+                          ORDER BY count(*) DESC, from_user ASC)
+FROM google_gmail_emails
+GROUP BY from_user;
